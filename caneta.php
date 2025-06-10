@@ -1,34 +1,52 @@
 <?php
+// Definindo a classe caneta
+
 class Caneta{
-    public $nome;
-    public $preco;
-    public $quantidade;
+    // definir atributos
+    public $cor;
+    public $marca;
+    public $ponta;
+    public $tamanho;
+    public $carga;
 
-    public function exibirInformaçoes(){
-        echo "Nome: $this->nome";
-        echo ", Preço: $this->preco";
-        echo ", Quantidade: $this->quantidade <br>";
+    // definir os metodos
+    public function escrever(){
+        echo"escrevendo...<br>";
+    }    
+    public function rabiscar(){
+        echo "rabiscando...<br>";
     }
+    public function sublinhar(){
+        echo "sublinhando...<br>";
+    }
+    public function pintar(){
+        echo "pintando...<br>";
+    }
+
 }
 
-$p1 = new Caneta();
-$p1->nome = "caneta";
-$p1->preco = 2.5;
-$p1->quantidade = 10;
-$p1->exibirInformaçoes();
+// Instanciando a classa caneta
+$caneta1 = new Caneta();
+// como os atributos da classe caneta são publicos, podemos acessá-los diretamentes
+$caneta1->cor = "azul";
+$caneta1->marca = "BIC";
+$caneta1->ponta = 0.5;
+$caneta1->tamanho = "grande";
+$caneta1->carga = 100;
 
-$p2 = new Caneta();
-$p2->nome = "caneta azul";
-$p2->preco = 4.5;
-$p2->quantidade = 10;
-$p2->exibirInformaçoes();
+// Exibindo os atributos da caneta
+echo "Cor: " . $caneta1->cor ."<br>";
+echo "Marca: " . $caneta1->marca ."<br>";
+echo "Ponta: " . $caneta1->ponta ."<br>";
+echo "Tamanho: ". $caneta1->tamanho ."<br>";
+echo "carga: ". $caneta1->carga ."<br>";
 
-function media($p1, $p2) {
-    return ($p1->preco + $p2->preco) / 2;
-}
-$media = media($p1, $p2);
-echo "<br>Média de preços: $media <br>";
-    
+// chamar o métodos da caneta
+$caneta1->escrever();
+$caneta1->rabiscar();
+$caneta1->sublinhar();
+$caneta1->pintar();
+
 
 
 ?>
