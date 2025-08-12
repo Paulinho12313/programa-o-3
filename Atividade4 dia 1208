@@ -1,0 +1,73 @@
+<?php
+
+class Veiculo {
+    public $modelo;
+    public $cor;
+    public $ano;
+
+    public function andar() {
+        echo "Andou<br>";
+    }
+
+    public function mostrarDetalhes() {
+        echo "Modelo: " . $this->modelo . "<br>";
+        echo "Cor: " . $this->cor . "<br>";
+        echo "Ano: " . $this->ano . "<br>";
+    }
+}
+
+class Carro extends Veiculo {
+    public $tipoCombustivel;
+
+    public function ligarLimpador() {
+        echo "Limpador ligado<br>";
+    }
+
+    public function mostrarCombustivel() {
+        echo "Tipo de combustível: " . $this->tipoCombustivel . "<br>";
+    }
+}
+
+class Moto extends Veiculo {
+    public function darGrau() {
+        echo "Deu grau!<br>";
+    }
+
+    // Sobrescrevendo o método andar()
+    public function andar() {
+        echo "Moto está em movimento<br>";
+    }
+}
+
+$carro1 = new Carro();
+$carro1->modelo = "Fiat Uno";
+$carro1->cor = "Preto";
+$carro1->ano = 2010;
+$carro1->tipoCombustivel = "Álcool";
+$carro1->andar(); 
+
+echo "<br>";
+
+$carro2 = new Carro();
+$carro2->modelo = "Chevrolet Onix";
+$carro2->cor = "Branco";
+$carro2->ano = 2022;
+$carro2->tipoCombustivel = "Gasolina";
+$carro2->mostrarCombustivel(); 
+
+echo "<br>";
+
+$moto1 = new Moto();
+$moto1->modelo = "Yamaha YBR 125";
+$moto1->cor = "Preta";
+$moto1->ano = 2015;
+$moto1->andar(); 
+
+echo "<br>";
+
+$moto2 = new Moto();
+$moto2->modelo = "Honda CB 300";
+$moto2->cor = "Vermelha";
+$moto2->ano = 2018;
+$moto2->darGrau(); 
+?>
