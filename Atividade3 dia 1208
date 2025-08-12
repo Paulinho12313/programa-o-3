@@ -1,0 +1,35 @@
+<?php
+class Veiculo {
+    public $modelo;
+    public $cor;
+    public $ano;
+
+    public function mostrarDetalhes() {
+        echo "Modelo: " . $this->modelo . "<br>";
+        echo "Cor: " . $this->cor . "<br>";
+        echo "Ano: " . $this->ano . "<br>";
+    }
+}
+
+class Carro extends Veiculo {
+    public $tipoCombustivel;
+
+    public function ligarLimpador() {
+        echo "Limpador ligado<br>";
+    }
+
+    public function mostrarCombustivel() {
+        echo "Tipo de combustível: " . $this->tipoCombustivel . "<br>";
+    }
+}
+
+$carro = new Carro();
+$carro->modelo = "Fusca";
+$carro->cor = "Azul";
+$carro->ano = 1985;
+$carro->tipoCombustivel = "Gasolina";
+$carro->mostrarDetalhes();      
+$carro->mostrarCombustivel();   
+$carro->ligarLimpador();       
+?>
+
