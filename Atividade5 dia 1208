@@ -1,0 +1,49 @@
+<?php
+
+class Veiculo {
+    public $modelo;
+    public $cor;
+    public $ano;
+
+    public function andar() {
+        echo "Andou<br>";
+    }
+
+    public function mostrarDetalhes() {
+        echo "Modelo: " . $this->modelo . "<br>";
+        echo "Cor: " . $this->cor . "<br>";
+        echo "Ano: " . $this->ano . "<br>";
+    }
+}
+
+class Carro extends Veiculo {
+    public $tipoCombustivel;
+
+    public function ligarLimpador() {
+        echo "Limpador ligado<br>";
+    }
+
+    public function mostrarCombustivel() {
+        echo "Tipo de combustível: " . $this->tipoCombustivel . "<br>";
+    }
+}
+
+class CarroEletrico extends Carro {
+    public function carregarBateria() {
+        echo "Bateria carregada<br>";
+    }
+}
+
+$carroEletrico = new CarroEletrico();
+$carroEletrico->modelo = "Tesla Model 3";
+$carroEletrico->cor = "Cinza";
+$carroEletrico->ano = 2023;
+$carroEletrico->tipoCombustivel = "Elétrico";
+
+$carroEletrico->andar(); 
+echo "<br>";
+$carroEletrico->mostrarCombustivel(); 
+
+
+$carroEletrico->carregarBateria(); 
+?>
