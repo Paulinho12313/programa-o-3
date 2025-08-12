@@ -1,0 +1,28 @@
+<?php
+class Veiculo {
+    public $modelo;
+    public $cor;
+    public $ano;
+
+    public function andar() {
+        echo "Andou";
+    }
+
+    public function parar() {
+        echo "Parou";
+    }
+}
+
+class Caminhao extends Veiculo {
+    public function carregarCarga() {
+        echo "Carga carregada com sucesso!";
+    }
+}
+
+// Exemplo de uso
+$caminhao = new Caminhao();
+$caminhao->modelo = "Volvo FH";
+$caminhao->cor = "Branco";
+$caminhao->ano = 2020;
+$caminhao->carregarCarga();
+?>
