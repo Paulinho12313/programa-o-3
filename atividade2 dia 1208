@@ -1,0 +1,21 @@
+<?php
+class Veiculo {
+    public function andar() {
+        echo "Veículo está em movimento";
+    }
+}
+
+class Moto extends Veiculo {
+    public function darGrau() {
+        echo "Deu grau!";
+    }
+
+
+    public function andar() {
+        echo "Moto está em movimento";
+    }
+}
+
+$moto = new Moto();
+$moto->andar();
+?>
