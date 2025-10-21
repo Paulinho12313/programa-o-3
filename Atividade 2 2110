@@ -1,0 +1,71 @@
+<?php
+
+abstract class Pessoa {
+    protected $nome;
+    protected $idade;
+    protected $sexo;
+
+    public function __construct($nome, $idade, $sexo) {
+        $this->nome = $nome;
+        $this->idade = $idade;
+        $this->sexo = $sexo;
+    }
+
+    final public function fazerAniversario() {
+        $this->idade++;
+        echo "Parabéns, {$this->nome}! Agora você tem {$this->idade} anos.\n";
+    }
+
+    abstract public function getNome();
+    abstract public function getIdade();
+    abstract public function getSexo();
+}
+
+class Aluno extends Pessoa {
+
+    protected $matricula;
+    protected $curso;
+
+    public function __construct($nome, $idade, $sexo, $matricula, $curso) {
+        parent::__construct($nome, $idade, $sexo);
+        $this->matricula = $matricula;
+        $this->curso = $curso;
+    }
+
+    public function getNome() {
+        return $this->nome;
+    }
+
+    public function getIdade() {
+        return $this->idade;
+    }
+
+    public function getSexo() {
+        return $this->sexo;
+    }
+
+    public function pagarMensalidade() {
+        echo "Mensalidade paga com sucesso por {$this->nome}!\n";
+    }
+
+    public function getMatricula() {
+        return $this->matricula;
+    }
+
+    public function getCurso() {
+        return $this->curso;
+    }
+}
+
+$a1 = new Aluno("Maria", 22, "Feminino", "12345", "Engenharia");
+
+$a1->pagarMensalidade();
+
+echo "Nome: " . $a1->getNome() . "\n";   
+echo "Idade: " . $a1->getIdade() . "\n";   
+echo "Sexo: " . $a1->getSexo() . "\n";      
+
+echo "Matrícula: " . $a1->getMatricula() . "\n"; 
+echo "Curso: " . $a1->getCurso() . "\n";     
+
+?>
