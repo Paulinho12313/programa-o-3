@@ -1,0 +1,94 @@
+<?php
+
+abstract class Pessoa {
+    protected $nome;
+    protected $idade;
+    protected $sexo;
+
+    public function __construct($nome, $idade, $sexo) {
+        $this->nome = $nome;
+        $this->idade = $idade;
+        $this->sexo = $sexo;
+    }
+
+    final public function fazerAniversario() {
+        $this->idade++;
+        echo "Parabéns, {$this->nome}! Agora você tem {$this->idade} anos.\n";
+    }
+
+    abstract public function getNome();
+    abstract public function getIdade();
+    abstract public function getSexo();
+}
+
+class Aluno extends Pessoa {
+
+    protected $matricula;
+    protected $curso;
+
+    public function __construct($nome, $idade, $sexo, $matricula, $curso) {
+        parent::__construct($nome, $idade, $sexo);
+        $this->matricula = $matricula;
+        $this->curso = $curso;
+    }
+
+    public function getNome() {
+        return $this->nome;
+    }
+
+    public function getIdade() {
+        return $this->idade;
+    }
+
+    public function getSexo() {
+        return $this->sexo;
+    }
+
+    public function pagarMensalidade() {
+        echo "Mensalidade paga com sucesso por {$this->nome}!\n";
+    }
+
+    public function getMatricula() {
+        return $this->matricula;
+    }
+
+    public function getCurso() {
+        return $this->curso;
+    }
+}
+
+class Bolsista extends Aluno {
+
+    private $bolsa;
+
+    public function __construct($nome, $idade, $sexo, $matricula, $curso, $bolsa) {
+        parent::__construct($nome, $idade, $sexo, $matricula, $curso);
+        $this->bolsa = $bolsa;
+    }
+
+    public function renovarBolsa() {
+        echo "Bolsa renovada com sucesso!\n";
+    }
+
+    public function pagarMensalidade() {
+        echo "Mensalidade paga com desconto por {$this->nome}.\n";
+    }
+
+    public function getBolsa() {
+        return $this->bolsa;
+    }
+}
+
+$b1 = new Bolsista("Pedro", 20, "Masculino", "67890", "Ciência da Computação", 50);
+
+$b1->renovarBolsa(); 
+$b1->pagarMensalidade();
+
+echo "Nome: " . $b1->getNome() . "\n";        
+echo "Idade: " . $b1->getIdade() . "\n";     
+echo "Sexo: " . $b1->getSexo() . "\n";        
+echo "Curso: " . $b1->getCurso() . "\n";     
+echo "Matrícula: " . $b1->getMatricula() . "\n"; 
+echo "Bolsa: " . $b1->getBolsa() . "%\n";     
+
+?>
