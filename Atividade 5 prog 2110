@@ -1,0 +1,145 @@
+<?php
+
+abstract class Pessoa {
+    protected $nome;
+    protected $idade;
+    protected $sexo;
+
+    public function __construct($nome, $idade, $sexo) {
+        $this->nome = $nome;
+        $this->idade = $idade;
+        $this->sexo = $sexo;
+    }
+
+    final public function fazerAniversario() {
+        $this->idade++;
+        echo "Parabéns, {$this->nome}! Agora você tem {$this->idade} anos.\n";
+    }
+
+    abstract public function getNome();
+    abstract public function getIdade();
+    abstract public function getSexo();
+}
+
+class Aluno extends Pessoa {
+
+    protected $matricula;
+    protected $curso;
+
+    public function __construct($nome, $idade, $sexo, $matricula, $curso) {
+        parent::__construct($nome, $idade, $sexo);
+        $this->matricula = $matricula;
+        $this->curso = $curso;
+    }
+
+    public function getNome() {
+        return $this->nome;
+    }
+
+    public function getIdade() {
+        return $this->idade;
+    }
+
+    public function getSexo() {
+        return $this->sexo;
+    }
+
+    public function pagarMensalidade() {
+        echo "Mensalidade paga com sucesso por {$this->nome}!\n";
+    }
+
+    public function getMatricula() {
+        return $this->matricula;
+    }
+
+    public function getCurso() {
+        return $this->curso;
+    }
+}
+
+class Bolsista extends Aluno {
+
+    private $bolsa;
+
+    public function __construct($nome, $idade, $sexo, $matricula, $curso, $bolsa) {
+        parent::__construct($nome, $idade, $sexo, $matricula, $curso);
+        $this->bolsa = $bolsa;
+    }
+
+    public function renovarBolsa() {
+        echo "Bolsa renovada com sucesso!\n";
+    }
+
+    public function pagarMensalidade() {
+        echo "Mensalidade paga com desconto por {$this->nome}.\n";
+    }
+
+    public function getBolsa() {
+        return $this->bolsa;
+    }
+}
+
+class Professor extends Pessoa {
+
+    protected $especialidade;
+    protected $salario;
+
+    public function __construct($nome, $idade, $sexo, $especialidade, $salario) {
+        parent::__construct($nome, $idade, $sexo);
+        $this->especialidade = $especialidade;
+        $this->salario = $salario;
+    }
+
+    public function getNome() {
+        return $this->nome;
+    }
+
+    public function getIdade() {
+        return $this->idade;
+    }
+
+    public function getSexo() {
+        return $this->sexo;
+    }
+
+    public function receberAumento($valor) {
+        $this->salario += $valor;
+        echo "{$this->nome} recebeu um aumento de R$ {$valor}. Novo salário: R$ {$this->salario}\n";
+    }
+
+    public function getEspecialidade() {
+        return $this->especialidade;
+    }
+
+    public function getSalario() {
+        return $this->salario;
+    }
+}
+
+$a1 = new Aluno("Lucas", 19, "Masculino", "12345", "Matemática");
+$b1 = new Bolsista("Joana", 21, "Feminino", "67890", "Biologia", 50);
+$p1 = new Professor("Dr. Silva", 45, "Masculino", "Matemática", 5000);
+
+$vetor = [$a1, $b1, $p1];
+
+foreach ($vetor as $obj) {
+    echo "Tipo: " . get_class($obj) . "\n"; 
+    
+    if ($obj instanceof Aluno) {
+        $obj->pagarMensalidade();
+    }
+    
+    if ($obj instanceof Bolsista) {
+        $obj->renovarBolsa();
+        $obj->pagarMensalidade();
+    }
+
+    if ($obj instanceof Professor) {
+        $obj->receberAumento(500);
+    }
+
+    echo "\n";
+}
+
+
+?>
