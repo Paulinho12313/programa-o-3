@@ -1,0 +1,42 @@
+<?php
+
+abstract class Pessoa {
+    protected $nome;
+    protected $idade;
+    protected $sexo;
+
+    public function __construct($nome, $idade, $sexo) {
+        $this->nome = $nome;
+        $this->idade = $idade;
+        $this->sexo = $sexo;
+    }
+
+    final public function fazerAniversario() {
+        $this->idade++;
+        echo "Parabéns, {$this->nome}! Agora você tem {$this->idade} anos.";
+    }
+
+    abstract public function getNome();
+    abstract public function getIdade();
+    abstract public function getSexo();
+}
+
+class Aluno extends Pessoa {
+
+    public function getNome() {
+        return $this->nome;
+    }
+
+    public function getIdade() {
+        return $this->idade;
+    }
+
+    public function getSexo() {
+        return $this->sexo;
+    }
+}
+
+$aluno = new Aluno("João", 20, "Masculino");
+$aluno->fazerAniversario();  
+
+?>
